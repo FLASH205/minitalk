@@ -6,25 +6,25 @@
 /*   By: ybahmaz <ybahmaz@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 10:13:51 by ybahmaz           #+#    #+#             */
-/*   Updated: 2025/02/27 14:07:47 by ybahmaz          ###   ########.fr       */
+/*   Updated: 2025/02/28 11:04:28 by ybahmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void  handler(int signal)  
+int	ft_power(int n, int pow)
 {
-  if (signal == SIGUSR1)
-    	write(1, "blah\n", 5);
+	int i = 1;
+	while (i < pow)
+	{
+		n *= 2;
+		i++;
+	}
+	return (n);
 }
 
-int main(int argc , char *argv[])
+int main()
 {
-	int pid = getpid();
-
-	printf("%d\n", pid);
-	signal(SIGUSR1, handler);
-	while (1)
-		pause();
- return (0);
+	printf("%d\n", ft_power(2, 7));
+	return (0);
 }

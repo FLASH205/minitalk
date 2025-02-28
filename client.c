@@ -6,7 +6,7 @@
 /*   By: ybahmaz <ybahmaz@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:45:46 by ybahmaz           #+#    #+#             */
-/*   Updated: 2025/02/27 15:56:41 by ybahmaz          ###   ########.fr       */
+/*   Updated: 2025/02/28 13:31:22 by ybahmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,16 @@ void	ft_send_data(char c, int pid)
 		bit = c % 2;
 		if (bit)
 		{
-			
-			if (kill(pid, SIGUSR1) == -1);
+			if (kill(pid, SIGUSR1) == -1)
+				(write(2, "Error in kill()\n", 16), exit(1));
 		}
 		else
-			kill(pid, SIGUSR1);
-			
+		{	
+			if (kill(pid, SIGUSR2) == -1)
+				(write(2, "Error in kill()\n", 16), exit(1));
+		}
+		usleep(200);
+		c = c / 2;
 		i++;
 	}
 }
