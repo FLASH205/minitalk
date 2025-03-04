@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybahmaz <ybahmaz@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 10:14:29 by ybahmaz           #+#    #+#             */
-/*   Updated: 2025/03/03 12:14:36 by ybahmaz          ###   ########.fr       */
+/*   Created: 2025/03/01 14:03:38 by ybahmaz           #+#    #+#             */
+/*   Updated: 2025/03/04 15:16:53 by ybahmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <signal.h>
+int	ft_atoi(char *str)
+{
+	int		i;
+	long	r;
 
-void	ft_print_pid(int pid);
-void	ft_putchar(char c);
-int		ft_atoi(char *str);
+	i = 0;
+	while (str[i])
+	{
+		if (!(str[i] >= '0' && str[i] <= '9'))
+			return (-1);
+		i++;
+	}
+	r = 0;
+	i = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		r = r * 10 + str[i] - '0';
+		if (r > 2147483647)
+			return (-1);
+		i++;
+	}
+	return (r);
+}
 
-#endif
